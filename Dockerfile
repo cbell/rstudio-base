@@ -1,4 +1,4 @@
-# latest as of 02-03-2020
+# jupyter/r-notebook:414b5d749704 latest as of 02-03-2020
 # version description: Major.Minor.Fix 
 FROM jupyter/r-notebook:414b5d749704 
 USER root
