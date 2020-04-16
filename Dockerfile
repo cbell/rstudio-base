@@ -1,6 +1,7 @@
-# jupyter/r-notebook:414b5d749704 latest as of 02-03-2020
+# jupyter/r-notebook:414b5d749704 latest as of 04-16-2020
+# changing version due to issues reported here: https://github.com/jupyter/docker-stacks/issues/927
 # version description: Major.Minor.Fix 
-FROM jupyter/r-notebook:414b5d749704 
+FROM jupyter/r-notebook:dc9744740e12
 USER root
 
 RUN sudo apt-get update && \
