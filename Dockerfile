@@ -1,7 +1,7 @@
-# jupyter/r-notebook:414b5d749704 latest as of 04-16-2020
+# jupyter/r-notebook:feacdbfc2e89 latest as of 10-16-2020
 # changing version due to issues reported here: https://github.com/jupyter/docker-stacks/issues/927
 # version description: Major.Minor.Fix 
-FROM jupyter/r-notebook:dc9744740e12
+FROM jupyter/r-notebook:feacdbfc2e89
 USER root
 
 RUN sudo apt-get update && \
@@ -17,7 +17,16 @@ RUN sudo apt-get update && \
 # isolate user packages to a nice and clean folder 
     sudo ln /usr/bin/R /usr/local/bin/R && \
     mkdir -p /home/jovyan/R/packages && \
-    pip install jupyter-rsession-proxy && \ 
-    fix-permissions /home/jovyan
+    pip install jupyter-rsession-proxy 
+# Adding libudunits dependancies 
+    COPY libudunits2-0_2.2.20-1+b1_amd64.deb /opt/
+    COPY libudunits2-dev_2.2.20-1+b1_amd64.deb /opt/
+    RUN dpkg -i /opt/libudunits2-0_2.2.20-1+b1_amd64.deb
+    RUN apt-get install -f
+    RUN dpkg -i /opt/libudunits2-dev_2.2.20-1+b1_amd64.deb
+    RUN apt-get install -f
+# Adding cutadapt
+    RUN pip install cutadapt
+    RUN fix-permissions /home/jovyan
 
 USER jovyan
