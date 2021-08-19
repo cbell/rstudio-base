@@ -1,3 +1,4 @@
+2.0.0: Updating image to have R-4.1.1
 1.1.0: Adding cutadapt  
 1.0.5: using manually installed libudunits   
 1.0.4: Updated to use feacdbfc2e89 image   
